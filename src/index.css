@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-vietnamese bg-gradient-to-br from-amber-50 to-orange-100 min-h-screen;
+  }
+}
+
+@layer components {
+  .board-intersection {
+    @apply relative w-12 h-12 border border-gray-800 flex items-center justify-center cursor-pointer transition-all duration-200;
+  }
+  
+  .board-intersection:hover {
+    @apply bg-yellow-200 bg-opacity-50;
+  }
+  
+  .board-intersection.selected {
+    @apply bg-blue-300 bg-opacity-70 ring-2 ring-blue-500;
+  }
+  
+  .board-intersection.valid-move {
+    @apply bg-green-300 bg-opacity-50;
+  }
+  
+  .board-intersection.valid-move::after {
+    content: '';
+    @apply absolute w-3 h-3 bg-green-500 rounded-full opacity-70;
+  }
+  
+  .board-intersection.last-move {
+    @apply bg-yellow-400 bg-opacity-60;
+  }
+  
+  .piece {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold cursor-pointer transition-all duration-200 select-none;
+  }
+  
+  .piece.red {
+    @apply bg-vietnamese-red text-white border-2 border-red-800 shadow-lg;
+  }
+  
+  .piece.black {
+    @apply bg-gray-800 text-white border-2 border-gray-900 shadow-lg;
+  }
+  
+  .piece:hover {
+    @apply transform scale-110 shadow-xl;
+  }
+  
+  .piece.in-check {
+    @apply animate-check-warning;
+  }
+  
+  .river {
+    @apply bg-blue-200 bg-opacity-30;
+  }
+  
+  .palace {
+    @apply bg-palace-bg bg-opacity-40;
+  }
+  
+  .game-button {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .game-button.primary {
+    @apply bg-vietnamese-red text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  
+  .game-button.secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+  }
+  
+  .game-button.success {
+    @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+  
+  .game-button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .board-shadow {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+}
